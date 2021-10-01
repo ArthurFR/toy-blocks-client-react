@@ -43,10 +43,10 @@ exports[`<Nodes /> should match snapshot 1`] = `
         className="MuiAccordionSummary-content makeStyles-content-6"
       >
         <div
-          className="MuiBox-root MuiBox-root-10 makeStyles-summaryContent-4"
+          className="MuiBox-root MuiBox-root-11 makeStyles-summaryContent-4"
         >
           <div
-            className="MuiBox-root MuiBox-root-11"
+            className="MuiBox-root MuiBox-root-12"
           >
             <h5
               className="MuiTypography-root makeStyles-heading-8 MuiTypography-h5"
@@ -60,13 +60,13 @@ exports[`<Nodes /> should match snapshot 1`] = `
             </h6>
           </div>
           <div
-            className="MuiBox-root MuiBox-root-16"
+            className="MuiBox-root MuiBox-root-17"
           >
             <span
-              className="makeStyles-dot-12 makeStyles-dot-14"
+              className="makeStyles-dot-13 makeStyles-dot-15"
             />
             <span
-              className="makeStyles-text-13 makeStyles-text-15"
+              className="makeStyles-text-14 makeStyles-text-16"
             >
               OFFLINE
             </span>
@@ -125,12 +125,12 @@ exports[`<Nodes /> should match snapshot 1`] = `
             role="region"
           >
             <div
-              className="MuiAccordionDetails-root"
+              className="MuiAccordionDetails-root makeStyles-blocks-10"
             >
               <p
                 className="MuiTypography-root MuiTypography-body1"
               >
-                Blocks go here
+                There are no blocks
               </p>
             </div>
           </div>
@@ -164,10 +164,10 @@ exports[`<Nodes /> should match snapshot 1`] = `
         className="MuiAccordionSummary-content makeStyles-content-6"
       >
         <div
-          className="MuiBox-root MuiBox-root-17 makeStyles-summaryContent-4"
+          className="MuiBox-root MuiBox-root-18 makeStyles-summaryContent-4"
         >
           <div
-            className="MuiBox-root MuiBox-root-18"
+            className="MuiBox-root MuiBox-root-19"
           >
             <h5
               className="MuiTypography-root makeStyles-heading-8 MuiTypography-h5"
@@ -181,13 +181,13 @@ exports[`<Nodes /> should match snapshot 1`] = `
             </h6>
           </div>
           <div
-            className="MuiBox-root MuiBox-root-21"
+            className="MuiBox-root MuiBox-root-22"
           >
             <span
-              className="makeStyles-dot-12 makeStyles-dot-19"
+              className="makeStyles-dot-13 makeStyles-dot-20"
             />
             <span
-              className="makeStyles-text-13 makeStyles-text-20"
+              className="makeStyles-text-14 makeStyles-text-21"
             >
               OFFLINE
             </span>
@@ -246,12 +246,12 @@ exports[`<Nodes /> should match snapshot 1`] = `
             role="region"
           >
             <div
-              className="MuiAccordionDetails-root"
+              className="MuiAccordionDetails-root makeStyles-blocks-10"
             >
               <p
                 className="MuiTypography-root MuiTypography-body1"
               >
-                Blocks go here
+                There are no blocks
               </p>
             </div>
           </div>

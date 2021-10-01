@@ -50,3 +50,45 @@ export function checkNodeStatuses(list) {
     });
   };
 }
+
+const getBlocksDataStart = (node) => {
+  return {
+    type: types.GET_BLOCKS_DATA_START,
+    node,
+  };
+};
+
+const getBlocksDataSuccess = (node, res) => {
+  return {
+    type: types.GET_BLOCKS_DATA_SUCCESS,
+    node,
+    res,
+  };
+};
+
+const getBlocksDataFailure = (node) => {
+  return {
+    type: types.GET_BLOCKS_DATA_FAILURE,
+    node,
+  };
+};
+
+export function getBlocksData(node) {
+  return async (dispatch) => {
+    try {
+      dispatch(getBlocksDataStart(node));
+      const res = await fetch(`${node.url}/api/v1/blocks`);
+
+      if (res.status >= 400) {
+        dispatch(getBlocksDataFailure(node));
+        return;
+      }
+
+      const json = await res.json();
+
+      dispatch(getBlocksDataSuccess(node, json));
+    } catch (err) {
+      dispatch(getBlocksDataFailure(node));
+    }
+  };
+}

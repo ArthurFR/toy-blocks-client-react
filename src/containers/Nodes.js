@@ -24,6 +24,10 @@ export class Nodes extends React.Component {
       expandedNodeURL:
         node.url === this.state.expandedNodeURL ? null : node.url,
     });
+
+    if (node.url !== this.state.expandedNodeURL) {
+      this.props.actions.getBlocksData(node);
+    }
   }
 
   render() {

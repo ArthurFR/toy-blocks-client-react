@@ -11,9 +11,11 @@ import {
 } from "@material-ui/core";
 import colors from "../constants/colors";
 import Status from "./Status";
+import Block from "./Block";
 
 const Node = ({ node, expanded, toggleNodeExpanded }) => {
   const classes = useStyles();
+
   return (
     <Accordion
       elevation={3}
@@ -45,8 +47,12 @@ const Node = ({ node, expanded, toggleNodeExpanded }) => {
           <Status loading={node.loading} online={node.online} />
         </Box>
       </AccordionSummary>
-      <AccordionDetails>
-        <Typography>Blocks go here</Typography>
+      <AccordionDetails className={classes.blocks}>
+        {node.blocks.loading ? <Typography>Loading...</Typography> :
+          node.blocks.error ? <Typography>There was an error when fetching for blocks.</Typography> :
+          node.blocks.list.length === 0 ? <Typography>There are no blocks</Typography> :
+          node.blocks.list.map(block => <Block key={block.attributes.index} block={block.attributes} />)
+        }
       </AccordionDetails>
     </Accordion>
   );
@@ -96,6 +102,9 @@ const useStyles = makeStyles((theme) => ({
     color: colors.faded,
     lineHeight: 2,
   },
+  blocks: {
+    flexDirection: "column",
+  }
 }));
 
 Node.propTypes = {

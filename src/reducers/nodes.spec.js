@@ -11,13 +11,23 @@ describe('Reducers::Nodes', () => {
   const nodeA = {
     url: 'http://localhost:3002',
     online: false,
-    name: null
+    name: null,
+    blocks: {
+      list: [],
+      loading: false,
+      error: false,
+    }
   };
 
   const nodeB = {
     url: 'http://localhost:3003',
     online: false,
-    name: null
+    name: null,
+    blocks: {
+      list: [],
+      loading: false,
+      error: false,
+    }
   };
 
   it('should set initial state by default', () => {
@@ -85,6 +95,84 @@ describe('Reducers::Nodes', () => {
           online: false,
           name: 'alpha',
           loading: false
+        },
+        nodeB
+      ]
+    };
+
+    expect(reducer(appState, action)).toEqual(expected);
+  });
+
+  it('should handle GET_BLOCKS_DATA_START', () => {
+    const appState = {
+      list: [nodeA, nodeB]
+    };
+    const action = { type: ActionTypes.GET_BLOCKS_DATA_START, node: nodeA };
+    const expected = {
+      list: [
+        {
+          ...nodeA,
+          blocks: {
+            ...nodeA.blocks,
+            loading: true,
+            error: false,
+          }
+        },
+        nodeB
+      ]
+    };
+
+    expect(reducer(appState, action)).toEqual(expected);
+  });
+
+  it('should handle GET_BLOCKS_DATA_SUCCESS', () => {
+    const res = { data: [{attributes: {index: 1, data: 'block_data'}}] };
+    const appState = {
+      list: [nodeA, nodeB]
+    };
+    const action = { type: ActionTypes.GET_BLOCKS_DATA_SUCCESS, node: nodeA, res };
+    const expected = {
+      list: [
+        {
+          ...nodeA,
+          blocks: {
+            list: res.data,
+            loading: false,
+            error: false,
+          }
+        },
+        nodeB
+      ]
+    };
+
+    expect(reducer(appState, action)).toEqual(expected);
+  });
+
+  it('should handle GET_BLOCKS_DATA_FAILURE', () => {
+    const appState = {
+      list: [
+        {
+          ...nodeA,
+          blocks: {
+            list: [{attributes: {index: 1, data: 'block_data'}}],
+            loading: false,
+            error: false,
+          }
+        }
+        ,
+        nodeB
+      ]
+    };
+    const action = { type: ActionTypes.GET_BLOCKS_DATA_FAILURE, node: nodeA };
+    const expected = {
+      list: [
+        {
+          ...nodeA,
+          blocks: {
+            list: [],
+            loading: false,
+            error: true,
+          }
         },
         nodeB
       ]
